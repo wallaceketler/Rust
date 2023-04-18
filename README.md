@@ -115,3 +115,54 @@ Por outro lado, o código acima funciona, já que, em tempo de compilação, sab
 
 ## Funções
 
+Definidas com *fn* seguida do nome da função definida em snake-case separada por underscore do tipo
+
+~~~rust
+
+    fn do_stuff(){
+
+    }
+
+~~~
+
+Em rust não precisamos escrever o corpo da função antes da chamada dela, o que permite que o main fique no topo do código. Os parâmetros da função são passados como *nome: tipo* separados por vírgula e o retorno é passado depois dos parenteses como *-> tipo*. O retorno é usado como * return algo * ou basta deixarmos a última linha sem ponto e vírgula (tail expression).
+
+~~~rust
+
+    fn do_stuff(qty: f64, oz: f64) -> f64{
+        return qty*oz;
+    }
+
+~~~
+
+ou
+
+~~~rust
+
+    fn do_stuff(qty: f64, oz: f64) -> f64{
+        qty*oz
+    }
+
+~~~
+
+Uma função em Rust não suporta número variável de argumentos ou diferentes tipos pra um mesmo argumento. Para isso, preciramos de macros, como o println!. Todo macro termina em exclamação.
+
+## Sistema de módulos
+
+Em rust, você pode criar uma biblioteca .rs e importar em determinado arquivo .rs com 
+
+~~~rust
+
+use NOME_PROJETO::FUNCAO_CRIADA_QUE_QUERO_USAR;
+use std; //biblioteca padrão
+
+~~~
+
+Podemos procurar o que há na biblioteca padrão em https://doc.rust-lang.org/std/index.html#primitives. Fora da bibliteca padrão, temos o *crates.io*, onde acharemos o resto (pacotes em geral). Para adicionar um pacotes do crates.io devemos em no arquivo Cargo.toml e adicionar o nome do pacote seguido de igual e da versão, como o exemplo a seguir para números randômicos.
+
+~~~rust
+
+[dependencies]
+rand = "0.6.5" 
+
+~~~
